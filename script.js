@@ -18,7 +18,7 @@ const handleBoxAnimation = (animationClass) => {
 
 const sendMessage = (action, count) => {
   const message = { action, count };
-  channel.postMessage(JSON.stringify(message));
+  channel.postMessage(message);
 };
 
 addToCartBtn.addEventListener("click", () => {
@@ -39,12 +39,10 @@ removeBtn.addEventListener("click", () => {
 
 channel.onmessage = (event) => {
   console.log(`Received message: ${event.data}`);
-  const data = JSON.parse(event.data);
-  console.log(data.action);
-  if (data.action === "add" || data.action === "remove") {
-    data.action === "add" && handleBoxAnimation("add-box");
-    data.action === "remove" && handleBoxAnimation("remove-box");
-    cartCount = data.count;
+  if (event.data.action === "add" || event.data.action === "remove") {
+    event.data.action === "add" && handleBoxAnimation("add-box");
+    event.data.action === "remove" && handleBoxAnimation("remove-box");
+    cartCount = event.data.count;
     setTimeout(updateCartDisplay, 500);
   }
 };
