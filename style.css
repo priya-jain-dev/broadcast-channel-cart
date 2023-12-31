@@ -1,0 +1,178 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+:root {
+  --font: 'Poppins', sans-serif;
+  --bg-color: #231f20;
+  --card-color: #0ba95b;
+  --primary-color: #fcba28;
+  --primary-contrast: #231f20;
+  --warning-color: #ed203d;
+  --warning-contrast: #231f20;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.card-wrapper {
+  width: 380px;
+  padding: 30px;
+  border: 10px;
+  border-radius: 20px;
+  background: var(--card-color);
+   box-shadow: 0 0 20px 1px rgba(5,5,5,.10);
+}
+.main-wrapper {
+  width: 100%;
+  height: 100vh;
+  background: var(--bg-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cart {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  ion-icon {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.cart-badge {
+  position: absolute;
+  top: -10px;
+  right: -15px;
+  width: 28px;
+  height: 28px;
+  padding: 5px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--primary-color);
+  color: var(--primary-contrast);
+  font-family: var(--font);
+}
+
+.cart-wrapper {
+  position: relative;
+  width: 50px;
+  height: 50px; 
+}
+
+
+.box {
+  position: absolute;
+  top: 50%;
+  left: -50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  width: 20px;
+  height: 20px;
+}
+
+@keyframes add-to-cart-animation {
+  0% {
+    top: 20%;
+    left: -30%;
+    opacity: 0;
+  }
+  25% {
+    top: -20%;
+    left: 50%;
+    opacity: 1;
+  }
+  50% {
+    top: 0%;
+    left: 70%;
+  }
+  75% {
+    top: 35%;
+    left: 50%;
+  }
+  100% {
+    top: 35%;
+    left: 50%;
+    opacity: 0;
+  }
+}
+.box.add-box {
+  animation: add-to-cart-animation 1s ease-in-out;
+}
+@keyframes remove-from-cart-animation {
+  0% {
+    top: 35%;
+    left: 50%;
+    opacity: 0;
+  }
+  25% {
+    top: 35%;
+    left: 50%;
+  }
+  50% {
+    top: 0%;
+    left: 70%;
+    opacity: 1;
+  }
+  75% {
+    top: -20%;
+    left: 50%;
+    opacity: 1;
+  }
+  100% {
+    top: 20%;
+    left: -30%;
+    opacity: 0;
+  }
+}
+.box.remove-box {
+  animation: remove-from-cart-animation 1s ease-in-out;
+}
+
+
+.box > ion-icon {
+  width: 100%;
+  height: 100%;
+}
+.icon-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 0;
+  
+}
+
+.button-section {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.button-section > div {
+  padding: 0.5em 1em;
+  display: inline-block;
+  background-color: var(--primary-color);
+  border-radius: 9999px;
+  border: .12rem solid var(--primary-contrast);
+  font-family: var(--font);
+  font-size: 14px;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-decoration: none;
+  text-align: center;
+  color: var(--primary-contrast);
+  cursor: pointer;
+  box-shadow: 2px 2px 0 var(--primary-contrast);
+  transition: box-shadow .15s ease-in-out;
+  &#remove-btn {
+    background: var(--warning-color);
+    color: var(--warning-contrast);
+  } 
+}
